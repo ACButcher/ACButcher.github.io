@@ -1,42 +1,97 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                text-align: right;
+            }
+        </style>
     </head>
-    <style>
-        .center_image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%
-        }
-    </style>
     <body>
-        <div class="wrapper">
-            <header>
-                <img src="Logo.png" class="center"/>
-            </header>
-            <ul>
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="services.html">Services</a></li>
-            </ul>
-            <br>
-            <img src="game_collection.jpeg" class="center_image"/>
-            <h1>
-                Big Shot Games is a local video game store, boasting a wide variety of 
-                games, consoles, and accessories available for purchase. From the classic
-                Nintendo days to the most recent Playstation and Xbox models, we have it all!
-            </h1>
-            <h1>
-                We also boast a large trade-in business, paying the highest prices for your
-                unwanted video games, consoles, and accessories. Bring any item you wish to
-                sell for a FREE price quote.
-            </h1>
-            <h1>
-                We have numerous locations across the New England area, with our original 
-                location in Fairfield, CT. No matter which one of our stores you go into, rest
-                assured that our team will be happy to help you (or just talk about your favorite games)!
-            </h1>
-        </div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>Hotdogs</td>
+                <td id="Hotdogs"></td>
+            </tr>
+            <tr>
+                <td>Fries</td>
+                <td id="Fries"></td>
+            </tr>
+            <tr>
+                <td>Soda</td>
+                <td id="Soda"></td>
+            </tr>
+            <tr>
+                <td>Subtotal</td>
+                <td id="Subtotal"></td>
+            </tr>
+            <tr>
+                <td>Joe's Special</td>
+                <td id="Discount"></td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td id="Tax"></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td id="Total"></td>
+            </tr>
+        </table>
+        <script>
+            var order = getOrder();
+            document.getElementById("Hotdogs").innerHTML = order[0] + " * $3.75";
+            document.getElementById("Fries").innerHTML = order[1] + " * $2.00";
+            document.getElementById("Soda").innerHTML = order[2] + " * $1.50";
+            var subtotal = calculateSubtotal(order);
+            document.getElementById("Subtotal").innerHTML = "$" + subtotal;
+            var discount = joeSpecial(subtotal);
+            document.getElementById("Discount").innerHTML = discount == 0 ? "$0" : "-$" + discount;
+            var tax = applyTax(subtotal - discount);
+            document.getElementById("Tax").innerHTML = "$" + tax;
+            var total_price = total(subtotal, discount, tax);
+            document.getElementById("Total").innerHTML = "$" + total_price;
+            
+            
+
+            //getOrder prompts the user to input the number of items of each type they would like
+            // and returns them in an array
+            function getOrder() {
+                var hotdog_prompt = prompt("How many hotdogs would you like?", "");
+                var num_hotdogs = parseInt(hotdog_prompt);
+                var fries_prompt = prompt("How many fries would you like?", "");
+                var num_fries = parseInt(fries_prompt);
+                var soda_prompt = prompt("How many sodas would you like?", "");
+                var num_sodas = parseInt(soda_prompt);
+                var order = [num_hotdogs, num_fries, num_sodas];
+                return order;
+            }
+
+            //calculates the subtotal of the order
+            function calculateSubtotal(order_array) {
+                return (3.75 * order[0] + 2.00 * order[1] + 1.50 * order[2]).toFixed(2);
+            }
+
+            //gives the discount from applying joes special NOT THE PRICE APPLIED
+            function joeSpecial(price) {
+                return price >= 20 ? (.1 * price).toFixed(2) : 0;
+            }
+
+            //gives the tax after applying sales tax
+            function applyTax(price) {
+                return (price * (.0625)).toFixed(2);
+            }
+
+            //gets the total price
+            function total(subtotal, discount, tax) {
+                return (parseFloat(subtotal) - parseFloat(discount) + parseFloat(tax)).toFixed(2);
+            }
+        </script>
     </body>
+    
 </html>
