@@ -1,0 +1,62 @@
+[
+    {
+        "title": "YYZ",
+        "artist": "Rush",
+        "genres": ["Rock", "Instrumental"],
+        "year": 1981
+    },
+    {
+        "title": "Roll the Bones",
+        "artist": "Rush",
+        "genres": ["Rock", "Progressive Rock"],
+        "year": 1991
+    },
+    {
+        "title": "Red Barchetta",
+        "artist": "Rush",
+        "genres": ["Rock", "Progressive Rock"],
+        "year": 1981
+    },
+    {
+        "title": "Test for Echo",
+        "artist": "Rush",
+        "genres": ["Hard Rock", "Progressive Rock"],
+        "year": 1996
+    },
+    {
+        "title": "The Analog Kid",
+        "artist": "Rush",
+        "genres": ["Rock", "Progressive Rock"],
+        "year": 1982
+    },
+    {
+        "title": "Famous Friends",
+        "artist": "Chris Young",
+        "genres": ["Country", "Rock"],
+        "year": 2020
+    },
+    {
+        "title": "As Good as I Once Was",
+        "artist": "Toby Keith",
+        "genres": ["Country"],
+        "year": 2005
+    },
+    {
+        "title": "The Wellerman",
+        "artist": "The Longest Johns",
+        "genres": ["Sea Shanty"],
+        "year": 2018
+    },
+    {
+        "title": "Bones in the Ocean",
+        "artist": "The Longest Johns",
+        "genres": ["Sea Shanty"],
+        "year": 2013
+    },
+    {
+        "title": "Drunken Sailor",
+        "artist": "The Longest Johns",
+        "genres": ["Sea Shanty"],
+        "year": 2016
+    }
+]

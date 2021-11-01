@@ -1,47 +1,70 @@
+<!doctype html>
 <html>
-    <body>
-        <form action="">
-            <label for="first_num">First number:</label><br>
-            <input type="text" id="first" name="fnum"><br>
-            <label for="second_num">Last number:</label><br>
-            <input type="text" id="second" name="snum"><br><br>
-            <input type="button" onclick="onPressed()" value="Submit">
-        </form>
-        <div>
-            <h1 id="result"></h1>
-        </div>
-        <script language = "javascript">
-            function onPressed() {
-                var first_num = parseInt(document.getElementById("first").value);
-                var second_num = parseInt(document.getElementById("second").value);
-                alert("Factors of first number: " + findFactors(first_num) + "\n" +
-                        "Factors of second number: " + findFactors(second_num));
-                document.getElementById("result").innerHTML = 
-                    areNumbersAmicable(first_num, second_num) ? 
-                    "The numbers: " + first_num + " and " + second_num + " are amicable" :
-                    "The numbers: " + first_num + " and " + second_num + " are not amicable";
-            }
+<head>
+<link rel="icon" href="data:,"> 
+<meta charset="utf-8">
+<title>JSON Setlist</title>
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	<!--script language="javascript" src="animals.json"></script-->
+	
 
-            function findFactors(number) {
-                var factors = [];
-                for (i = 1; i < number; i++) {
-                    if (number % i == 0) factors.push(i);
-                }
-                return factors;
-            }
+</head>
 
-            function findSum(numbers) {
-                var sum = 0;
-                for (i = 0; i < numbers.length; i++) {
-                    sum += numbers[i];
-                }
-                return sum;
-            }
+<body>
+	<script language="javascript">
+        loadFile();
 
-            function areNumbersAmicable(num_one, num_two) {
-                return findSum(findFactors(num_one)) == num_two 
-                        && findSum(findFactors(num_two)) == num_one;
-            }
-        </script>
-    </body>
+        function loadFile() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			// Step 2: Set the URL for the AJAX request to be the JSON file
+ 
+			request.open("GET", "http://butcher-tufts-cs.freecluster.eu/songlist.json", true);
+
+			console.log("2 - opened request file");
+ 
+			// Step 3: set up event handler/callback
+
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+					// Step 5: wait for done + success
+
+					result = request.responseText;
+
+                    document.write(JSON.stringify(songlist));
+					songlist = JSON.parse(result);
+					
+					// strHTML = "<ul>";
+					// animals.forEach(function(songlist) { 
+					//   strHTML += "<li>" + songlist.title + " : " + songlist.artist + "</li>";
+					// }) 
+					// strHTML += "</ul>";
+					// document.getElementById("data").innerHTML =strHTML;  
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+    </script>
+</script>
+</body>
 </html>
