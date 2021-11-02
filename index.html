@@ -51,16 +51,16 @@
 		}
 
 		function filterByGenre() {
-			console.log("Click");
+			// console.log("Click");
 			var selectedGenre = $("#genreSelect").val();
-			console.log(selectedGenre + "\n");
+			// console.log(selectedGenre + "\n");
 			$.get( "https://acbutcher.github.io/songlist.json", 
 			function( data ) {
 				strHTML = "<ul>";
 
 				data.forEach(function(song) { 
 					if (song.genres.includes(selectedGenre)) {
-						console.log(song + "has");
+						// console.log(song + "has");
 						genreString = "";
 						(song.genres).forEach(function(genre) {
 							if (genreString != "") genreString = genreString + ", ";
