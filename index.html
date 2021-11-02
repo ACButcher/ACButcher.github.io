@@ -13,19 +13,31 @@
 <body>
 	<script language="javascript">
 
-		var genreList = [];
 
 		$.get( "https://acbutcher.github.io/songlist.json", 
 			function( data ) {
 				str = JSON.stringify(data);
 				document.write(str +"<br/>");
 				strHTML= "<ul>";
-				// data.forEach(function(animal) { 
+				
+				var genreList = [];
 
-				// 	}) 
-				// strHTML += "</ul>";
-				// document.write (strHTML);  /**/
+				data.forEach(function(song) { 
+					genreString = "";
+					(song.genres).forEach(function(genre) {
+						if (!genreList.includes(genre)) genreList.push(genre);
+						if (genreString != "") genreString = genreString + ", ";
+						genreString = genreString + genre;
+					})
+				})
+				strHTML += "</br>";
+				strHTML += song.title + "</br>";
+				strHTML += "Artist: " + song.artist + "</br>";
+				strHTML += "Genres: " + genreString + "</br>";
+				strHTML += "Release Year: " + song.year + "</br>";
 			})
+		strHTML += "</ul>";
+		$("songlist_table").html(strHTML);
 		// function formatSong(songJson, songNumber) {
 		// 	var s = "<tr><td>";
 		// 	s += makeSelect("quan" + i, 0, 10);
@@ -34,5 +46,6 @@
 		// 	s += "<td>$<input type='text' name='cost'/></td></tr>";
 		// }
     </script>
+	<div id = "songlist_table"></div>
 </body>
 </html>
