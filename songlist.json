@@ -20,7 +20,7 @@
     {
         "title": "Test for Echo",
         "artist": "Rush",
-        "genres": ["Hard Rock", "Progressive Rock"],
+        "genres": ["Hard Rock", "Progressive Rock", "Rock"],
         "year": 1996
     },
     {

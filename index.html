@@ -41,25 +41,23 @@
 				makeDropdown(genreList);
 			})
 		
-			function makeDropdown(genreList) {
-				var selectHTML = "<select name = 'genreSelect'>";
-				for (i = 0; i < genreList.length; i++) {
-					selectHTML = selectHTML + "<option>" + genreList[i] + "</option>";
-				}
-				selectHTML = selectHTML + "</select>";
-				$("#select_div").html(selectHTML);
+		function makeDropdown(genreList) {
+			var selectHTML = "<select name = 'genreSelect'>";
+			for (i = 0; i < genreList.length; i++) {
+				selectHTML = selectHTML + "<option>" + genreList[i] + "</option>";
 			}
-		
-		// function formatSong(songJson, songNumber) {
-		// 	var s = "<tr><td>";
-		// 	s += makeSelect("quan" + i, 0, 10);
-		// 	s += "</td><td>" + menuItems[i].name + "</td>";
-		// 	s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
-		// 	s += "<td>$<input type='text' name='cost'/></td></tr>";
-		// }
+			selectHTML = selectHTML + "</select>";
+			$("#select_div").html(selectHTML);
+		}
+
+		function filterByGenre() {
+			
+		}
+			
     </script>
 	<div id = "raw_string"></div>
 	<div id = "songlist_table"></div>
 	<div id = "select_div"></div>
+	<button type = "button" onClick = "filterByGenre()"></button>
 </body>
 </html>
