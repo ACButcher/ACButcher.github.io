@@ -36,9 +36,19 @@
 					strHTML += "Release Year: " + song.year + "<br/>";
 				})
 				strHTML += "</ul>";
-				console.log(strHTML);
+				// console.log(strHTML);
 				$("#songlist_table").html(strHTML);
+
 			})
+		
+			function makeDropdown(genreList) {
+				var selectHTML = "<select name = 'genreSelect'>";
+				for (i = 0; i < genreList.length; i++) {
+					selectHTML = selectHTML + "<option>" + genreList[i] + "</option>";
+				}
+				selectHTML = selectHTML + "</select>";
+				$("select_div").html(selectHTML);
+			}
 		
 		// function formatSong(songJson, songNumber) {
 		// 	var s = "<tr><td>";
@@ -50,6 +60,6 @@
     </script>
 	<div id = "raw_string"></div>
 	<div id = "songlist_table"></div>
-	<!-- <h1></br>YYZ</br>Artist: Rush</br>Genres: Rock, Instrumental</br>Release Year: 1981</br></br>Roll the Bones</br>Artist: Rush</br>Genres: Rock, Progressive Rock</br>Release Year: 1991</br></br>Red Barchetta</br>Artist: Rush</br>Genres: Rock, Progressive Rock</br>Release Year: 1981</br></br>Test for Echo</br>Artist: Rush</br>Genres: Hard Rock, Progressive Rock</br>Release Year: 1996</br></br>The Analog Kid</br>Artist: Rush</br>Genres: Rock, Progressive Rock</br>Release Year: 1982</br></br>Famous Friends</br>Artist: Chris Young</br>Genres: Country, Rock</br>Release Year: 2020</br></br>As Good as I Once Was</br>Artist: Toby Keith</br>Genres: Country</br>Release Year: 2005</br></br>The Wellerman</br>Artist: The Longest Johns</br>Genres: Sea Shanty</br>Release Year: 2018</br></br>Bones in the Ocean</br>Artist: The Longest Johns</br>Genres: Sea Shanty</br>Release Year: 2013</br></br>Drunken Sailor</br>Artist: The Longest Johns</br>Genres: Sea Shanty</br>Release Year: 2016</br></h1> -->
+	<div id = "select_div"></div>
 </body>
 </html>
