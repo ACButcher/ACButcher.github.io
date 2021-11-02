@@ -42,7 +42,7 @@
 			})
 		
 		function makeDropdown(genreList) {
-			var selectHTML = "<select name = 'genreSelect'>";
+			var selectHTML = "<select name = 'genreSelect' id = 'genreSelect'>";
 			for (i = 0; i < genreList.length; i++) {
 				selectHTML = selectHTML + "<option>" + genreList[i] + "</option>";
 			}
@@ -50,7 +50,9 @@
 			$("#select_div").html(selectHTML);
 		}
 
-		function filterByGenre(selectedGenre) {
+		function filterByGenre() {
+			var selectedGenre = $("#genreSelect").val();
+			console.log(selectedGenre + "\n");
 			$.get( "https://acbutcher.github.io/songlist.json", 
 			function( data ) {
 				strHTML = "<ul>";
