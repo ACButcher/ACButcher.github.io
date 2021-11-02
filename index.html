@@ -13,7 +13,8 @@
 <body>
 	<script language="javascript">
         var songlist = loadFile();
-		document.write(songlist);
+		var firstSong = songlist[0];
+		document.write(firstSong.title);
 
         function loadFile() {
 			/* Step 1: Make instance of request object...
