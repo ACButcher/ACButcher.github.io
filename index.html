@@ -22,9 +22,9 @@
 				
 				var genreList = [];
 
-				data.forEach(song => { 
+				data.forEach(function(song) { 
 					genreString = "";
-					(song.genres).forEach(genre => {
+					(song.genres).forEach(function(genre) {
 						if (!genreList.includes(genre)) genreList.push(genre);
 						if (genreString != "") genreString = genreString + ", ";
 						genreString = genreString + genre;
