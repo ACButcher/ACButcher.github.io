@@ -35,10 +35,11 @@
 					strHTML += "Genres: " + genreString + "</br>";
 					strHTML += "Release Year: " + song.year + "</br>";
 				})
-				
+				strHTML += "</ul>";
+				console.log(strHTML);
+				$("songlist_table").html(strHTML);
 			})
-		strHTML += "</ul>";
-		$("songlist_table").html(strHTML);
+		
 		// function formatSong(songJson, songNumber) {
 		// 	var s = "<tr><td>";
 		// 	s += makeSelect("quan" + i, 0, 10);
