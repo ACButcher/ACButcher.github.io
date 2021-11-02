@@ -12,13 +12,13 @@
 
 <body>
 	<script language="javascript">
-
+		var strHTML = "";
 
 		$.get( "https://acbutcher.github.io/songlist.json", 
 			function( data ) {
 				str = JSON.stringify(data);
 				document.write(str +"<br/>");
-				strHTML= "<ul>";
+				strHTML = "<ul>";
 				
 				var genreList = [];
 
