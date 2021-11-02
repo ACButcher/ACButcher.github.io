@@ -12,7 +12,8 @@
 
 <body>
 	<script language="javascript">
-        loadFile();
+        var songlist = loadFile();
+		document.write(songlist[0]["title"])
 
         function loadFile() {
 			/* Step 1: Make instance of request object...
@@ -40,12 +41,8 @@
                     document.write(JSON.stringify(result));
 					songlist = JSON.parse(result);
 					
-					// strHTML = "<ul>";
-					// animals.forEach(function(songlist) { 
-					//   strHTML += "<li>" + songlist.title + " : " + songlist.artist + "</li>";
-					// }) 
-					// strHTML += "</ul>";
-					// document.getElementById("data").innerHTML =strHTML;  
+					return songlist;
+					
 				}
 				else if (request.readyState == 4 && request.status != 200) {
 
