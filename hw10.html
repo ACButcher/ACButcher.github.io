@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <title>Random Chuck Norris Joke</title>
+    </head>
+        <h1>Random Chuck Norris Joke</h1>
+        <div id = "joke"></div>
+        <br>
+        <div>The API I selected is for the Chuck Norris Joke Database. It provides a Chuck Norris joke from the database</div>
+        <br>
+        <div>http://www.icndb.com/api/</div>
+        <br>
+        <div>I used the asynchronous option.</div>
+        <br>
+        <div>This API is useful if you would like to get multiple Chuck Norris jokes at the same time. It is also useful
+             if you would like to specify the type of Chuck Norris joke you want.</div>
+        <script language = "javascript">
+            getJoke();
+            function getJoke() {
+            /* Step 1: Make instance of request object...
+            ...to make HTTP request after page is loaded*/
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+ 
+            // Step 2: Set the URL for the AJAX request to be the JSON file
+            request.open("GET", "https://api.icndb.com/jokes/random", true)
+
+                console.log("2 - opened request file");
+    
+                // Step 3: set up event handler/callback
+
+                request.onreadystatechange = function() {
+                    console.log("3 - readystatechange event fired.");
+    
+                    if (request.readyState == 4 && request.status == 200) {
+
+                        // Step 5: wait for done + success
+                        console.log("5 - response received");
+                        result = request.responseText;
+                        data = JSON.parse(result);
+                        
+                        document.getElementById("joke").innerHTML = data.value.joke;
+
+                        
+                    }
+                    else if (request.readyState == 4 && request.status != 200) {
+
+                        document.getElementById("joke").innerHTML = "Something is wrong! Check the logs to see where this went off the rails";
+
+                    }
+
+                    else if (request.readyState == 3) {
+
+                        document.getElementById("joke").innerHTML = "Too soon! Try again";
+
+                    }
+
+                }
+            // Step 4: fire off the HTTP request
+                request.send();
+                console.log("4 - Request sent");
+            }
+
+            // $.get( "https://api.icndb.com/jokes/random", 
+			// function( data ) {
+            //     $("#joke").html(data.value.joke + "<br/>");
+			// })
+        </script>
+    </body>
+</html>
